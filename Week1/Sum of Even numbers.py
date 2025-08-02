@@ -27,6 +27,28 @@ def odd(n):
         
     return result
 
+def evenwhile(n):
+    result=0
+   
+    i=2
+    while i<n+1:
+        print('The even numbers are_while ',i)
+        result=result+i
+        i=i+2
+    print('Sum of even numbers_while',result)      
+    return result
+def oddwhile(n):
+    result=0
+    i=1
+    while i<n+1:
+        print('The odd numbers are_while ',i)
+        result=result+i
+        i=i+2
+    print('Sum of odd numbers_while',result)    
+
+    return result
 if __name__ == "__main__":
     even(5)
     odd(5)
+    evenwhile(5)
+    oddwhile(5)
