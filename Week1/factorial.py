@@ -9,7 +9,9 @@ def fact(n):
         
         print('Factorial doesnt handle negative number')      
     return result
-
 fact(5)
-# if _name_='_main_'
+
+# if __name__=='_main_':
+#     ans=fact(5)
+#     print(ans)
 
