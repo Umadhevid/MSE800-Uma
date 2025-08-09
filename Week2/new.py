@@ -7,8 +7,8 @@ class StringManipulator:
         return len(self.text)
     def convert(self):
         return self.text.upper()
-name=StringManipulator("example")
-result=name.find_character('x')
+name=StringManipulator("sunDay")
+result=name.find_character('a')
 length=name.string_length()
 convert=name.convert()
 print(result)
