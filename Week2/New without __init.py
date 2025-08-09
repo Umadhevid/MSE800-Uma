@@ -1,6 +1,5 @@
 class StringManipulator:
-    # def __init__(self,text):
-    #     self.text=text
+   
 
     def find_character(name,char):
         return name.find(char)
