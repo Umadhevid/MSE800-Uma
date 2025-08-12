@@ -16,6 +16,7 @@ def main():
     input_user=sentence_obj.sentence_input()
     words_count=sentence_obj.word_count()
     print('Number of words in a sentence is : ',words_count)
+    return
 
 
 if __name__=='__main__':

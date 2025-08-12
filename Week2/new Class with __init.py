@@ -18,6 +18,7 @@ def main():
     print('String Length',length)
     print('String Converted in to Upper case',convert)
     # string's length and convert it to uppercase.
+    return
 
 if __name__=="__main__":
     main()
