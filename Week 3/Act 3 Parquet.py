@@ -2,44 +2,51 @@
 # Then, compute the maximum, minimum, average, and absolute values for each column in the dataset.
 
 import pandas as pd
-from ucimlrepo import fetch_ucirepo 
-class parquet_handling:
-    def display_parquet(self,text):
-        self.text=text
-    def convert_parquet(self,text):
-        panda_df=pd.read_csv(text)
-        panda_df.to_parquet("hospitaldata.parquet", engine='pyarrow', index=False)
-        panda_df = pd.read_parquet("large_dataset.parquet", engine='pyarrow')
-        print(panda_df.head())
-    def mainfun(self):
-        hospitaldata = fetch_ucirepo(id=296) 
+from ucimlrepo import fetch_ucirepo
 
-if __name__=='__main__':
-    parquet_handling.mainfun()
+class ParquetHandler:
+    def __init__(self, dataset_id=296):
+        self.dataset_id = dataset_id
+        self.df = None
 
-  
-# # fetch dataset 
-# hospitaldata = fetch_ucirepo(id=296) 
-  
-# # data (as pandas dataframes) 
-# X = diabetes_130_us_hospitals_for_years_1999_2008.data.features 
-# y = diabetes_130_us_hospitals_for_years_1999_2008.data.targets 
-  
-# # metadata 
-# print(diabetes_130_us_hospitals_for_years_1999_2008.metadata) 
-  
-# # variable information 
-# print(diabetes_130_us_hospitals_for_years_1999_2008.variables)  
+    def fetch_data(self):
+        # Fetch dataset
+        data = fetch_ucirepo(id=self.dataset_id)
+        # Combine features and targets
+        self.df = pd.concat([data.data.features, data.data.targets], axis=1)
+        print(f"Dataset loaded with {self.df.shape[0]} rows and {self.df.shape[1]} columns.")
 
-# df = pd.read_parquet("large_dataset.parquet", engine='pyarrow')
-# print(df.head())
-# df = pd.read_csv("large_dataset.csv")
+    def convert_to_parquet(self, filename="hospitaldata.parquet"):
+        # Ensure DataFrame is loaded
+        if self.df is None:
+            raise ValueError("Dataset not loaded. Run fetch_data() first.")
+        # Save as Parquet
+        self.df.to_parquet(filename, engine='pyarrow', index=False)
+        print(f"Data saved to {filename}")
+        # Read back to verify
+        df2 = pd.read_parquet(filename, engine='pyarrow')
+        print(f"Parquet file loaded with {df2.shape[0]} rows and {df2.shape[1]} columns.")
+        self.df = df2  # update df to Parquet version
 
-# # Convert to Parquet
-# df.to_parquet("large_dataset.parquet", engine='pyarrow', index=False)
+    def column_max(self):
+        return self.df.max(numeric_only=True)
 
+    def column_min(self):
+        return self.df.min(numeric_only=True)
 
-df = pd.concat([hospitaldata.data.features, hospitaldata.data.targets], axis=1)
-df.to_parquet("hospital_data.parquet", engine="pyarrow", index=False)
-df_parquet = pd.read_parquet("hospital_data.parquet", engine="pyarrow")
-print(df_parquet.head())
+    def column_average(self):
+        return self.df.mean(numeric_only=True)
+
+    def column_abs(self):
+        numeric_df = self.df.select_dtypes(include='number')  # only numeric columns
+        return numeric_df.abs()
+
+if __name__ == "__main__":
+    handler = ParquetHandler()
+    handler.fetch_data()
+    handler.convert_to_parquet()
+
+    print("\nColumn-wise Maximum:\n", handler.column_max())
+    print("\nColumn-wise Minimum:\n", handler.column_min())
+    print("\nColumn-wise Average:\n", handler.column_average())
+    print("\nColumn-wise Absolute Values (first 5 rows):\n", handler.column_abs().head())
