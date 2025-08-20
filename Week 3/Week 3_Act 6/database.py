@@ -9,7 +9,7 @@ def create_table():
     cursor = conn.cursor()
         # Student Table
     cursor.execute('''
-        CREATE TABLE IF NOT EXISTS Student (
+        CREATE TABLE IF NOT EXISTS students (
             Student_ID INTEGER PRIMARY KEY,
             First_Name TEXT NOT NULL,
             Last_Name TEXT NOT NULL,
