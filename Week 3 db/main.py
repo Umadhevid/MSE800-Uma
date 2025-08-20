@@ -9,6 +9,7 @@ def menu():
     print("4. Delete User by ID")
     print("5. Exit")
 
+
 def main():
     create_table()
     while True:

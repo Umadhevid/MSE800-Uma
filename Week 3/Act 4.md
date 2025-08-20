@@ -1,0 +1,10 @@
+Project scope (short paragraph):
+Write a  story that defines the purpose and scope of the database. Describe the main entities (e.g., students, lecturers, etc).
+Yoobee college need to biuld the database for managing academic and administration data.
+The database should have the all the details about the administration, students, lecturers, course detials, fee structure.
+The purpose of the database is to reduce redundancy,and provide accurate information.
+
+
+
+
+
