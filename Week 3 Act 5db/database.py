@@ -15,7 +15,7 @@ def create_table():
         )
     '''),
     cursor.execute('''
-        CREATE TABLE IF NOT EXISTS Students (
+        CREATE TABLE IF NOT EXISTS students (
             Stu_ID INTEGER PRIMARY KEY AUTOINCREMENT,
             Stu_name TEXT NOT NULL,
             Stu_address TEXT NOT NULL UNIQUE
@@ -23,3 +23,6 @@ def create_table():
     ''')
     conn.commit()
     conn.close()
+# Please add a new table named "Students" with 
+# three columns: Stu_ID, Stu_name, and Stu_address.
+#  Insert two sample records into Students, then display all rows from both the Users and Students tables.
