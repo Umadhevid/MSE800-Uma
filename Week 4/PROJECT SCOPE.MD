@@ -46,3 +46,5 @@ Use Cases:
 3. Admin-> schedules time table and  class room
         ->Generate fee reports for students
         -> Generate salary for lecturer
+USe case
+![alt text](image-1.png)
