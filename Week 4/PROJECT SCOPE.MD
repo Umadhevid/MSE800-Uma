@@ -50,3 +50,6 @@ Use case
 
 
 ![alt text](<Untitled Diagram.drawio.png>)
+Activity Diagram
+
+![alt text](Activity.drawio-1.png)
