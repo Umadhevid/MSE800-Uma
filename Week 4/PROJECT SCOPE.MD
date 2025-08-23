@@ -47,5 +47,6 @@ Use Cases:
         ->Generate fee reports for students
         -> Generate salary for lecturer
 Use case
-c:\Users\UD Sec Vaio\Downloads\Untitled Diagram.drawio.png
 
+
+![alt text](<Untitled Diagram.drawio.png>)
