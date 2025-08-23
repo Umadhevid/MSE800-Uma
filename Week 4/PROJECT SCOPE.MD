@@ -1,11 +1,12 @@
-Project scope (short paragraph):
+Project scope:
 
-Write a  story that defines the purpose and scope of the database. Describe the main entities (e.g., students, lecturers, etc).
-Yoobee college need to biuld the database for managing academic and administration data.
-The database should have the all the details about the Schedules, students, lecturers, course detials, fee structure.
+
+Yoobee college need to build the database for managing academic and administration data.
+The database should have the all the details about the  students, lecturers, course detials, fee structure.
 The purpose of the database is to reduce redundancy,and provide accurate information.
 
-Main Entities and Their Roles
+Main Entities and Their Roles:
+
 1.   Student
 Represents individuals enrolled at Yoobee College.
 
@@ -26,39 +27,22 @@ Represents academic fee details and due payments for each student.
 
 Attributes: Fee_Id (PK), Course_Id (FK), Total_Fee, Due_Date
 
-5.Schedules
-Represents the timetable for classes conducted by lecturers for students.
-
-Attributes: Schedule_Id (PK), Course_Id (FK), Lecturer_Id (FK), Room_No, StartTime, EndTime.
-
 
 Actors:
 1.Student
 2.Lecturer
-3.Course
-4.Fee
-5.Schedules
+3.Admin
 
 
 Use Cases:
-1. Student-> Register for the course in college
-        ->View /edit personal detials
+1. Student->View /edit personal detials
         ->view the schedules for the course/timetable
-        ->check for the fee payment details
-        -> make fee payment
-2. Lecture-> Manage and access course content
+        --> make fee payment
+        ->Submit Assignment
+2. Lecture-> Manage  course content
         ->See the total students for the particular course
-        ->correct the assignment
-        -> view/modify schedules
-3. Course-> provides courses avialable in the college
-        ->provides no of students registered for which course
-        -> Lecturer linked to the course
-        -> schedules time table , class room and timing
-4. Fee->Record payment
-    -> calculate due amount
-    ->Generate fee reports
-    ->Link fee for course
-5.Schedules-> create timetable
-            -> manage conflicts
-            -> access to student and lecture
-            ->update schedule
+        ->Evaluate the assignment
+       
+3. Admin-> schedules time table and  class room
+        ->Generate fee reports for students
+        -> Generate salary for lecturer
