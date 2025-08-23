@@ -47,7 +47,5 @@ Use Cases:
         ->Generate fee reports for students
         -> Generate salary for lecturer
 Use case
-![alt text](image-1.png)
-
-![alt text](image-2.png)
+c:\Users\UD Sec Vaio\Downloads\Untitled Diagram.drawio.png
 
