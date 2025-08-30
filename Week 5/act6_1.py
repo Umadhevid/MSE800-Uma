@@ -14,7 +14,7 @@ class admin(Student):
     def admin_student(self):
         print("Admin student", self.name)
         print("Admin student age", self._age)
-        print("Admin student grade", self.get_grade())
+        print("Admin student grade", self.get_grade())# unable to directly access to grade, since its private we can access via get_grade
 
 
 s = Student('Ali', 20)
