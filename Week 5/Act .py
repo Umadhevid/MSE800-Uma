@@ -1,5 +1,13 @@
-from oop import personal_details
-
+class personal_details:
+    def __init__(self,name,address, age):
+        self.name=name
+        self.address=address
+        self.age=age
+        
+    def display(self):
+        print(f"Display all detials",{self.name},{self.address},{self.age})
+        return
+   
 class Students(personal_details):
     def __init__(self,name,address,age,Stu_ID):
         super().__init__(name,address,age)
@@ -17,22 +25,10 @@ class Academics(personal_details):
         self.Salary=Salary
     def display_Academics(self):
         super().display()
-        return print("Display Academics Tax code and salary :",self.tax_code,self.Salary)
-class Generalstaff(personal_details):
-    def __init__(self,name,address,age,tax_code,payrate):
-        super().__init__(name,address,age)
-        self.tax_code=tax_code
-        self.payrate=payrate
-    def display_GeneralStaff(self):
-        super().display()
-        return print("Display General staff Tax code and payrate :",self.tax_code,self.payrate)
-
+        return print("Display Academics tax code and Salary :",self.tax_code,self.Salary)
 
 if __name__=="__main__":
     s1=Students("Uma","Onehunga","33","123")
     A1=Academics("Dhevi","Epsom","39","M","100000NZD")
-    G1=Generalstaff("Arjun","Epsom","49","S","100NZD/PH")
     s1.display_Students()
-    A1.display_Students()
     A1.display_Academics()
-    G1.display_GeneralStaff()
