@@ -24,7 +24,7 @@ class admin(Student):
     def updated_info(self):
         if self.get_grade()=='A':
             self.set_grade('A+')
-            print("Uodated student grade is :",self.get_grade())
+            print("Updated student grade is :",self.get_grade())
             
 
 
