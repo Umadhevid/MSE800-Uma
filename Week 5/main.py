@@ -33,6 +33,6 @@ if __name__=="__main__":
     A1=Academics("Dhevi","Epsom","39","M","100000NZD")
     G1=Generalstaff("Arjun","Epsom","49","S","100NZD/PH")
     s1.display_Students()
-    A1.display_Students()
+
     A1.display_Academics()
     G1.display_GeneralStaff()
