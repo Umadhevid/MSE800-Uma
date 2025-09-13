@@ -45,7 +45,7 @@ def add_student(stu_name, stu_address):
                    (stu_name, stu_address))
     conn.commit()
     conn.close()
-    print("✅ Student added successfully.")
+    print("Student added successfully.")
 
 def search_students(name):
     conn = create_connection()
@@ -61,17 +61,22 @@ def add_user(name, email):
     try:
         cursor.execute("INSERT INTO users (name, email) VALUES (?, ?)", (name, email))
         conn.commit()
-        print("✅ User added successfully.")
+        print(" User added successfully.")
     except sqlite3.IntegrityError:
-        print("❌ Email must be unique.")
+        print(" Email must be unique.")
     conn.close()
 
 def search_user(name):
     conn = create_connection()
     cursor = conn.cursor()
+
+    start_time = time.process_time()   # start measuring here
     cursor.execute("SELECT * FROM users WHERE name LIKE ?", ('%' + name + '%',))
     rows = cursor.fetchall()
+    end_time = time.process_time()     # end measuring here
+
     conn.close()
+    print(f"Time taken to fetch user data: {end_time - start_time:.6f} seconds")
     return rows
 
 # ---------------------------
@@ -81,8 +86,8 @@ def main():
     create_table()
 
     # Insert test data
-    add_student("Uma", "NZ")
-    add_user("Dhevi", "dhevi@example.com")
+    add_student("Uma111", "NZ111")
+    add_user("Dhevi111", "dhevi111@example.com")
 
     start_time = time.process_time()
 
@@ -90,12 +95,14 @@ def main():
     user = search_user("Dhevi")
     print("User Details:", user)
 
+    end_time = time.process_time()
+
     # Search for student
     student = search_students("Uma")
     print("Student Details:", student)
 
-    end_time = time.process_time()
-    print(f"Execution time: {end_time - start_time:.6f} seconds")
+   
+    print(f"Execution time: {end_time - start_time:.20f} seconds")
 
 if __name__ == "__main__":
     main()
