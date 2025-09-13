@@ -17,9 +17,18 @@ class ShapeFactory:
 
 
 factory = ShapeFactory()
-shape = factory.create_shape("circle")   
+shape = factory.create_shape("Triangle")   
 print(shape.draw())  
 
-#indicates that the program attempted to call the draw() method on a NoneType object.
-#  This occurred because the ShapeFactory.create_shape("triangle") method returned None, as "triangle" is not a recognized shape type in the factory logic.
-#  Consequently, the variable shape was assigned None, and invoking shape.draw() triggered the exception.
+#basically means your code tried to call .draw() on something that doesn’t exist. 
+# In this case, when you asked the ShapeFactory to create a "triangle", 
+# it didn’t know how to handle that request, so it returned None.
+#  Then, the program tried to run shape.draw() — but since shape is actually None, 
+# Python throws an error because None doesn’t have a draw() method.
+
+
+# The problem here is we are writing logic for each shape in ShapeFactory. In future 
+# if the shape is increased, the logic will be complicated and  every time we need to change the entire code
+# To make the logic easy, we need to have factory method.
+# Factory methods will have Abstract Base class. The child will inherit all the abstract methods from parent class.
+# so whenever new functionality come, we can add those part logic wihtout changing the entire logic
