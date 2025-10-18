@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Temperature Converter</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Temperature Converter</h2>
+    <input type="number" id="inputTemp" placeholder="Enter temperature" />
+    <select id="conversionType">
+      <option value="CtoF">Celsius → Fahrenheit</option>
+      <option value="FtoC">Fahrenheit → Celsius</option>
+      <option value="CtoK">Celsius → Kelvin</option>
+      <option value="KtoC">Kelvin → Celsius</option>
+      <option value="FtoK">Fahrenheit → Kelvin</option>
+      <option value="KtoF">Kelvin → Fahrenheit</option>
+    </select>
+    <button onclick="convert()">Convert</button>
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    async function convert() {
+      const value = parseFloat(document.getElementById('inputTemp').value);
+      const type = document.getElementById('conversionType').value;
+
+      const response = await fetch('/convert', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ value, conversion_type: type })
+      });
+
+      const data = await response.json();
+      const resultBox = document.getElementById('result');
+
+      if (data.converted !== undefined) {
+        resultBox.innerText = `Converted: ${data.converted}`;
+      } else {
+        resultBox.innerText = `Error: ${data.error}`;
+      }
+    }
+  </script>
+</body>
+</html>
